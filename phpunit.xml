@@ -2,7 +2,17 @@
 <phpunit colors="true">
   <testsuites>
     <testsuite name="Test suite">
-      <directory>test</directory>
+      <directory suffix="Test.php">./test</directory>
     </testsuite>
   </testsuites>
+
+  <coverage>
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+    <!-- <report>
+      <clover output="reports/logs/clover.xml"/>
+      <html output="reports/logs/coverage"/>
+    </report> -->
+  </coverage>
 </phpunit>
