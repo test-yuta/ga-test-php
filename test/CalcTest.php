@@ -8,7 +8,7 @@ class CalcTest extends TestCase {
         $calc = new Calc();
         $result = $calc->add(1, 2);
 
-        // $this->assertEquals(3, $result);
-        $this->assertEquals(5, $result); // fail
+        $this->assertEquals(3, $result); // success
+        // $this->assertEquals(5, $result); // fail
     }
 }
