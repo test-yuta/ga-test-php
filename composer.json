@@ -1,6 +1,7 @@
 {
 	"name": "hoge-company/foo-project",
 	"description": "This is a sample project.",
+	"license": "proprietary",
 	"autoload": {
 		"psr-4": {
 			"HogeCompany\\FooProject\\": "src"
