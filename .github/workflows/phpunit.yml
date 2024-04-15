@@ -2,7 +2,7 @@ name: PHPUnit
 
 on:
   push:
-    branches: [ "main", "1-複数のphpのバージョンでgithubactionsのテストを実施する" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
