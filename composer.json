@@ -1,4 +1,6 @@
 {
+	"name": "hoge-company/foo-project",
+	"description": "This is a sample project.",
 	"autoload": {
 		"psr-4": {
 			"HogeCompany\\FooProject\\": "src"
