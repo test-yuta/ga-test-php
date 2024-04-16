@@ -1,9 +1,9 @@
-name: PHPUnit
+name: PHP_CodeSniffer
 
 on:
   push:
     # branches: [ "main" ]
-    
+
     # `master`以外のブランチで実行。`master`ブランチは存在しないため、すべてのブランチで実行。
     branches-ignore: [ "master" ]
   pull_request:
@@ -13,13 +13,12 @@ permissions:
   contents: read
 
 jobs:
-  phpunit:
-    name: PHPUnit (PHP ${{ matrix.php-versions }})
+  phpcs:
+    name: PHP_CodeSniffer (PHP ${{ matrix.php-versions }})
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-versions: [ '7.4', '8.0' ]
-        # php-versions: [ '7.4' ]
+        php-versions: [ '8.0' ]
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +28,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           # extensions: mbstring, intl, pdo, sqlite, zip, pcntl
-          coverage: xdebug
+          # coverage: xdebug
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
@@ -46,8 +45,11 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-      # Docs: https://getcomposer.org/doc/articles/scripts.md
+      # php -l
+      - name: Run PHP lint
+        # srcフォルダとtestsフォルダのphpファイルに対してphp -lを実行
+        run : find src tests -type f -name "*.php" -exec php -l {} \;
 
-      - name: Run test suite
-        run: composer run-script test
+      # PHP_CodeSniffer
+      - name: Run lint suite
+        run: composer run-script lint
