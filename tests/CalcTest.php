@@ -1,10 +1,13 @@
 <?php
 
-use HogeCompany\FooProject\Calc;
+namespace HogeCompany\FooProject;
+
 use PHPUnit\Framework\TestCase;
 
-class CalcTest extends TestCase {
-    public function testAdd() {
+class CalcTest extends TestCase
+{
+    public function testAdd()
+    {
         $calc = new Calc();
         $result = $calc->add(1, 2);
 
