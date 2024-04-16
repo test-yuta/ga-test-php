@@ -2,7 +2,10 @@ name: PHPUnit
 
 on:
   push:
-    branches: [ "main" ]
+    # branches: [ "main" ]
+    
+    # `master`以外のブランチで実行。`master`ブランチは存在しないため、すべてのブランチで実行。
+    branches-ignore: [ "master" ]
   pull_request:
     branches: [ "main" ]
 
